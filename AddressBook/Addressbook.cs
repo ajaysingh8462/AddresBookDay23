@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace AddressBook
 {
-    internal class Addressbook
+    public class Addressbook
     {
         public string FirstName, LastName, Address, City, State , Email;
         public int Zip;
         public long PhoneNumber;
+        public Addressbook[] ContactArray;
+        public int Contact = 0;
+        public Addressbook()
+        {
+            this.ContactArray= new Addressbook[5];
+        }
         public Addressbook(string firstName, string lastName, string address, string city, string state,string Email, int zip, long phoneNumber)
         {
             FirstName = firstName;
@@ -22,15 +28,13 @@ namespace AddressBook
             Zip = zip;
             PhoneNumber = phoneNumber;
         }
-        public void DisplayContect()
+        public void CreatContact(string firstName, string lastName, string address, string city, string state, string Email, int zip, long phoneNumber)
         {
-            Console.WriteLine("Name {0} {1},",FirstName,LastName);
-            Console.WriteLine("Adrdess {0} " , Address);
-            Console.WriteLine("City {0}", City);
-            Console.WriteLine("State {0} ", State);
-            Console.WriteLine("Email {0}", Email);
-            Console.WriteLine("Zip {0}", Zip);
-            Console.WriteLine("PhoneNumber {0}", PhoneNumber);
+            ContactArray[this.Contact] = new Addressbook( firstName, lastName,address,city,state,Email,zip,phoneNumber);
+            Contact++;
+            program pr = new program();
+            pr.DisplayContact(ContactArray, Contact);
         }
+        
     }
 }
