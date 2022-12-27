@@ -35,9 +35,27 @@ namespace AddressBook
                 add.CreatContact(FirstName, LastName, Address, City, State, Email, Zip, PhoneNumber);
                 Contact--;
             }
-            //Addressbook Add = new Addressbook("Ajay","Singh","Sector 45","Gurgaon","Haryana","ajay8462@gamil.com",402001,7898234604);
-            //Add.DisplayContect();
+            while(true)
+            {
+                Console.WriteLine("1.Edit contact\n2.Delete contact for AddressBook\n3.Display Contact");
 
+                int op = Convert.ToInt32(Console.ReadLine());
+                switch (op)
+                {
+                    case 1:
+                        add.EditContact();
+
+                        break;
+                    case 2:
+                        add.DeleteContact();
+                        break;
+                    default:
+                        Console.WriteLine("Enter Valid Option");
+                        break;
+                }
+            }
+            
+           
 
         }
         public void DisplayContact(Addressbook[]ContactArray, int n)
