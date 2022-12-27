@@ -37,16 +37,19 @@ namespace AddressBook
             }
             while(true)
             {
-                Console.WriteLine("1.Edit contact);
+                Console.WriteLine("1.Edit contact\n2.Delete contact for AddressBook");
 
                 int op = Convert.ToInt32(Console.ReadLine());
                 switch (op)
                 {
                     case 1:
                         add.EditContact();
+
+                        break;
+                    case 2:
+                        add.DeleteContact();
                         break;
                     default:
-                  
                         Console.WriteLine("Enter Valid Option");
                         break;
                 }
