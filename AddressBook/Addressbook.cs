@@ -15,7 +15,7 @@ namespace AddressBook
 
         public void CreateContact(string firstName, string lastName, string address, string city, string state, string Email, int zip, long phoneNumber, string BookName)
         {
-            Contact co = new Contact();
+            Contact co = new Contact(firstName, lastName, address, city, state, Email, zip, phoneNumber);
             co.FirstName = firstName;
             co.LastName = lastName;
             co.Address = address;
@@ -140,6 +140,25 @@ namespace AddressBook
         public Dictionary<string, Addressbook> GetaddressBook()
         {
             return addressBookDic;
+        }
+        public List<Contact> GetListOfDictionaryKeys(string bookName)
+        {
+            List<Contact> contacts = new List<Contact>();
+            foreach (var value in addressBookDic[bookName].addressbook.Values)
+            {
+                contacts.Add(value);
+            }
+            return contacts;
+        }
+        public bool CheckDuplicateEntry(Contact check, string bookName)
+        {
+            List<Contact> contacts = GetListOfDictionaryKeys(bookName);
+            if (contacts.Any(b => b.Equals(check)))
+            {
+                Console.WriteLine("Name Already Exist");
+                return true;
+            }
+            return false;
         }
     }
 }
