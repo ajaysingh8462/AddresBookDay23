@@ -10,10 +10,6 @@ namespace AddressBook
     {
         public Dictionary<string, Contact> addressbook = new Dictionary<string, Contact>();
         public Dictionary<string, Addressbook> addressBookDic = new Dictionary<string, Addressbook>();
-        //public Dictionary<string, Contact> CityDictionary=new Dictionary<string, Contact>();
-        //public Dictionary<string, Contact> StateDictionary = new Dictionary<string, Contact>();
-
-
 
         public void CreateContact(string firstName, string lastName, string address, string city, string state, string Email, int zip, long phoneNumber, string BookName)
         {
@@ -62,7 +58,6 @@ namespace AddressBook
             }
 
         }
-
 
         public void EditContact(string name, string BookName)
         {
@@ -190,7 +185,18 @@ namespace AddressBook
                 Console.WriteLine("No person found from the city: " +state);
             }
         }
-       
+        public void GetPersonCountByCity(string city, string bookName)
+        {
+            int count = addressBookDic[bookName].addressbook.Values.Where(c => c.City == city).Count();
+            Console.WriteLine("Number of contacts in city " + city + ": " + count);
+        }
+
+        public void GetPersonCountByState(string state, string bookName)
+        {
+            int count = addressBookDic[bookName].addressbook.Values.Where(c => c.State == state).Count();
+            Console.WriteLine("Number of contacts in state " + state + ": " + count);
+        }
+
     }
 }
 
