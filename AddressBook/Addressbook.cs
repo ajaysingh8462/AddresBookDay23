@@ -10,6 +10,8 @@ namespace AddressBook
     {
         public Dictionary<string, Contact> addressbook = new Dictionary<string, Contact>();
         public Dictionary<string, Addressbook> addressBookDic = new Dictionary<string, Addressbook>();
+        //public Dictionary<string, Contact> CityDictionary=new Dictionary<string, Contact>();
+        //public Dictionary<string, Contact> StateDictionary = new Dictionary<string, Contact>();
 
 
 
@@ -117,7 +119,7 @@ namespace AddressBook
                 }
 
             }
-            
+
         }
         public void DeleteContact(string name, string BookName)
         {
@@ -160,6 +162,35 @@ namespace AddressBook
             }
             return false;
         }
+        public void FindPersonFromCity(string city, string BookName)
+        {
+            bool found = false;
+            addressBookDic[BookName].addressbook.Where(c => c.Value.City.ToLower().Equals(city.ToLower()))
+                .ToList().ForEach(c => 
+                {
+                    Console.WriteLine("Name: " + c.Value.FirstName  +  c.Value.LastName);
+                    found = true;
+                });
+            if (!found)
+            {
+                Console.WriteLine("No person found from the city: " + city);
+            }
+        }
+        public void FindPersonFromState(string state, string BookName)
+        {
+            bool found = false;
+            addressBookDic[BookName].addressbook.Where(c => c.Value.State.ToLower().Equals(state.ToLower()))
+                .ToList().ForEach(c =>
+                {
+                    Console.WriteLine("Name: " + c.Value.FirstName + c.Value.LastName);
+                    found = true;
+                });
+            if (!found)
+            {
+                Console.WriteLine("No person found from the city: " +state);
+            }
+        }
+       
     }
 }
 

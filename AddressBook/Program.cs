@@ -31,8 +31,8 @@ namespace AddressBook
             do
             {
                 Console.WriteLine("Working On {0} AddressBook", BookName);
-                Console.WriteLine("choice an option \n 1.AddContact\n2.Edit Contact\n3.DeleteContact\n4.ViewContact\n" +
-                    "5.View All COntact\n6.Add New AddressBook\n7.Swich addressBook\n8.Exit Application");
+                Console.WriteLine("choice an option \n1.AddContact\n2.Edit Contact\n3.DeleteContact\n4.ViewContact\n" +
+                    "5.View All COntact\n6.Add New AddressBook\n7.Swich addressBook\n8.Find person from city/state\n0.Exit");
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -106,9 +106,26 @@ namespace AddressBook
                             }
                         }
                         break;
+                    case 8:
+                        Console.WriteLine("Would you like to " + "\n1.Search from city\n2.Search from state  ");
+                        int option = Convert.ToInt32(Console.ReadLine());
+                        switch (option)
+                        {
+                            case 1:
+                                Console.WriteLine("Enter city");
+                                string CityName = Console.ReadLine();
+                                add.FindPersonFromCity(CityName, BookName);
+                                break;
+                            case 2:
+                                Console.WriteLine("Enter state ");
+                                string StateName = Console.ReadLine();
+                                add.FindPersonFromState(StateName, BookName);
+                                break;
+                        } break;
+                        
                 }
-
-            } while (choice != 8);
+            } while (choice != 0);
         }
     }
 }
+
