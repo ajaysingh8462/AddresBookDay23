@@ -32,7 +32,8 @@ namespace AddressBook
             {
                 Console.WriteLine("Working On {0} AddressBook", BookName);
                 Console.WriteLine("choice an option \n1.AddContact\n2.Edit Contact\n3.DeleteContact\n4.ViewContact\n" +
-                    "5.View All COntact\n6.Add New AddressBook\n7.Swich addressBook\n8.Find person from city/state\n9.Get person count in city/state\n0.Exit");
+                    "5.View All COntact\n6.Add New AddressBook\n7.Swich addressBook" +
+                    "\n8.Find person from city/state\n9.Get person count in city/state\n10.Get person sort by alphabetically\n0.Exit");
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -138,7 +139,9 @@ namespace AddressBook
                                 add.GetPersonCountByState(StateName, BookName);
                                 break;
                         }break;
-                        
+                    case 10:
+                        add.SortByName(BookName);
+                        break;
                 }
             } while (choice != 0);
         }

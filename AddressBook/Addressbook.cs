@@ -196,6 +196,18 @@ namespace AddressBook
             int count = addressBookDic[bookName].addressbook.Values.Where(c => c.State == state).Count();
             Console.WriteLine("Number of contacts in state " + state + ": " + count);
         }
+        public void SortByName(string BookName)
+        {
+            foreach(Addressbook addressBookobj in addressBookDic.Values)
+            {
+                List<string>list = addressBookobj.addressbook.Keys.ToList();
+                list.Sort();
+                foreach (string Name in list)
+                {
+                    Console.WriteLine(Name);
+                }
+            }
+        }
 
     }
 }
