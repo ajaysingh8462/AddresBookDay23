@@ -142,6 +142,23 @@ namespace AddressBook
                     case 10:
                         add.SortByName(BookName);
                         break;
+                    case 11:
+                        Console.WriteLine("Would you like to " + "\n1.Sort person by city\n2.Sort person by state\n3.Sort person by ZipCode  ");
+                        int checkc = Convert.ToInt32(Console.ReadLine());
+                        switch (checkc)
+                        {
+                            case 1:
+                                add.SortByCity(BookName);
+                                break;
+                            case 2:
+                                add.SortByState(BookName);
+                                break;
+                            case 3:
+                                add.SortByZip(BookName);
+                                break;
+                        }break;
+                        
+
                 }
             } while (choice != 0);
         }

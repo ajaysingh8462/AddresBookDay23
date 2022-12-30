@@ -27,17 +27,10 @@ namespace AddressBook
             Zip = zip;
             PhoneNumber = phoneNum;
         }
-        public override bool Equals(object? obj)
+
+        public override string ToString()
         {
-            Contact contact = obj as Contact;
-            if (contact == null)
-            {
-                return false;
-            }
-            else
-            {
-                return FirstName.Equals(contact.FirstName) && LastName.Equals(contact.LastName);
-            }
+            return "Name: " + FirstName + " " + LastName + ", Address: " + Address + ", City: " + City + ", State: " + State + ", Zip: " + Zip + ", Email: " + Email + ", Phone: " + PhoneNumber;
         }
 
     }

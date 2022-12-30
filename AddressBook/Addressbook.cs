@@ -196,18 +196,43 @@ namespace AddressBook
             int count = addressBookDic[bookName].addressbook.Values.Where(c => c.State == state).Count();
             Console.WriteLine("Number of contacts in state " + state + ": " + count);
         }
-        public void SortByName(string BookName)
+        public void SortByName(string bookName)
         {
-            foreach(Addressbook addressBookobj in addressBookDic.Values)
+            List<Contact> sortedContacts = addressBookDic[bookName].addressbook.Values.ToList();
+            sortedContacts.Sort((c1, c2) => c1.FirstName.CompareTo(c2.FirstName));
+            foreach (Contact contact in sortedContacts)
             {
-                List<string>list = addressBookobj.addressbook.Keys.ToList();
-                list.Sort();
-                foreach (string Name in list)
-                {
-                    Console.WriteLine(Name);
-                }
+                Console.WriteLine(contact);
             }
         }
+        public void SortByCity(string bookName)
+        {
+            List<Contact> sortedContacts = addressBookDic[bookName].addressbook.Values.ToList();
+            sortedContacts.Sort((c1, c2) => c1.City.CompareTo(c2.City));
+            foreach (Contact contact in sortedContacts)
+            {
+                Console.WriteLine(contact);
+            }
+        }
+        public void SortByState(string bookName)
+        {
+            List<Contact> sortedContacts = addressBookDic[bookName].addressbook.Values.ToList();
+            sortedContacts.Sort((c1, c2) => c1.State.CompareTo(c2.State));
+            foreach (Contact contact in sortedContacts)
+            {
+                Console.WriteLine(contact);
+            }
+        }
+        public void SortByZip(string bookName)
+        {
+            List<Contact> sortedContacts = addressBookDic[bookName].addressbook.Values.ToList();
+            sortedContacts.Sort((c1, c2) => c1.Zip.CompareTo(c2.Zip));
+            foreach (Contact contact in sortedContacts)
+            {
+                Console.WriteLine(contact);
+            }
+        }
+
 
     }
 }
