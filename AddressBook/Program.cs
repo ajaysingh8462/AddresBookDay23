@@ -33,7 +33,8 @@ namespace AddressBook
                 Console.WriteLine("Working On {0} AddressBook", BookName);
                 Console.WriteLine("choice an option \n1.AddContact\n2.Edit Contact\n3.DeleteContact\n4.ViewContact\n" +
                     "5.View All COntact\n6.Add New AddressBook\n7.Swich addressBook" +
-                    "\n8.Find person from city/state\n9.Get person count in city/state\n10.Get person sort by alphabetically\n0.Exit");
+                    "\n8.Find person from city/state\n9.Get person count in city/state\n10.Get person sort by alphabetically" +
+                    "10.Get person sort by City/State/Zip\n0.Exit");
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -157,9 +158,12 @@ namespace AddressBook
                                 add.SortByZip(BookName);
                                 break;
                         }break;
-                        
+ 
 
                 }
+                add.WritePersonContact(BookName, "file.txt");
+                add.ReadPersonContact(BookName, "file.txt");
+               
             } while (choice != 0);
         }
     }

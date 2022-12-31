@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -232,6 +233,39 @@ namespace AddressBook
                 Console.WriteLine(contact);
             }
         }
+        public void ReadPersonContact(string bookname , string filename)
+        {
+            string path = @"C:\Users\admin\source\repos\RFP232\AddresBookDay23\AddressBook\file.txt";
+
+            using (StreamReader sr = File.OpenText(path))
+            {
+                string s = "";
+                while((s = sr.ReadLine()) != null) 
+                {
+                    string[] fields = s.Split(';');
+                    string firstName = fields[0];
+                    string lastName = fields[1];
+                    string address = fields[2];
+                    string city = fields[3];
+                    string state = fields[4];
+                    int zip = int.Parse(fields[5]);
+                    string email = fields[6];
+                    long phoneNumber = long.Parse(fields[7]);
+                    CreateContact(firstName, lastName, address, city, state, email, zip, phoneNumber, bookname);
+                }
+            }
+        }
+        public void WritePersonContact(string bookname, string filename)
+        { 
+            string path = @"C:\Users\admin\source\repos\RFP232\AddresBookDay23\AddressBook\file.txt";
+
+            using (StreamWriter sr = File.AppendText(path))
+            { 
+                sr.WriteLine (bookname);
+                
+            }
+        }
+
 
 
     }
